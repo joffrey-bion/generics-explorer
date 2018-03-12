@@ -9,12 +9,6 @@ A way to recursively build something out of a generic type declaration.
 
 ## Add the dependency
 
-### Manual download
- 
-You may directly download the JAR from 
-[Generics Explorer Bintray Repository](https://bintray.com/joffrey-bion/maven/generics-explorer/_latestVersion), 
-although I recommend using a build tool such as [Gradle](https://gradle.org/).
- 
 ### Gradle
 
 ```groovy
@@ -29,8 +23,14 @@ compile 'org.hildan.generics:generics-explorer:1.0.0'
    <artifactId>generics-explorer</artifactId>
    <version>1.0.0</version>
 </dependency>
-```    
+```
 
+### Manual download
+ 
+You may directly download the JAR from 
+[Generics Explorer Bintray Repository](https://bintray.com/joffrey-bion/maven/generics-explorer/_latestVersion), 
+although I recommend using a build tool such as [Gradle](https://gradle.org/).
+ 
 ## License
 
 Code released under [the MIT license](https://github.com/joffrey-bion/generics-explorer/blob/master/LICENSE)
