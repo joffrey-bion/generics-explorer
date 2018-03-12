@@ -1,0 +1,6 @@
+user=joffrey-bion
+project=generics-explorer
+bug-labels=bug
+enhancement-labels=enhancement
+exclude-labels=wontfix,duplicate,invalid,internal
+release-url=https://bintray.com/joffrey-bion/maven/generics-explorer/%s
