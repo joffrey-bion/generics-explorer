@@ -7,7 +7,7 @@ apply plugin: 'maven-publish'
 
 group = 'org.hildan.generics'
 version = '1.0.0'
-description = 'Utilities for programs solving Google HashCode problems'
+description = 'A way to recursively build something out of a generic type declaration'
 ext.labels = ['java', 'generics', 'explorer', 'recursive']
 ext.licenses = ['MIT']
 
