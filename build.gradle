@@ -2,6 +2,7 @@
 plugins { id "com.jfrog.bintray" version "1.8.0" }
 
 apply plugin: 'java-library'
+apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
 apply plugin: 'maven-publish'
 
@@ -23,16 +24,33 @@ configurations {
 
 dependencies {
     compileOnly 'org.jetbrains:annotations:15.0'
-    testCompile 'junit:junit:4.+'
-    testCompile 'com.google.code.gson:gson:2.8.2'
+
+    testImplementation 'junit:junit:4.+'
+    testImplementation 'com.google.code.gson:gson:2.8.2'
+
     checkstyleConfig 'org.hildan.checkstyle:checkstyle-config:2.2.0'
 }
 
 checkstyle {
     maxWarnings = 0
-    toolVersion = '8.2'
+    toolVersion = '8.8'
     config = resources.text.fromArchiveEntry(configurations.checkstyleConfig, "checkstyle.xml")
 }
+
+jacoco {
+    toolVersion = '0.8.1'
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 1.0
+            }
+        }
+    }
+}
+check.dependsOn jacocoTestCoverageVerification
 
 def getPropOrEnv = { String prop, String envVar, String defaultValue = null ->
     if (project.hasProperty(prop)) {

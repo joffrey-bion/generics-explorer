@@ -40,6 +40,17 @@ public class MentionedClassesExplorerTest {
         MentionedClassesExplorer.getClassesInDeclaration(null);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void getClassesInDeclaration_failsOnUnknownKind() {
+        Type custom = new Type() {
+            @Override
+            public String getTypeName() {
+                return "custom type kind";
+            }
+        };
+        MentionedClassesExplorer.getClassesInDeclaration(custom);
+    }
+
     @Test
     public void getClassesInDeclaration_voidYieldsEmpty() {
         check(void.class);
