@@ -56,6 +56,8 @@ public class GenericDeclarationExplorer<T> {
      *         the type to explore
      * @param handler
      *         the handler to call on each element of the type declaration
+     * @param implicitBoundsPolicy
+     *         the policy regarding implicit Object upper bounds for wildcard types and type variables
      * @param <T>
      *         the type of values that the given {@link GenericTypeHandler} produces
      *
