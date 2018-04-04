@@ -29,6 +29,18 @@ public class GenericDeclarationExplorer<T> {
         this.resolvedTypeVariables = new HashSet<>();
     }
 
+    /**
+     * Recursively explores the given generic type using the given handler.
+     *
+     * @param type
+     *         the type to explore
+     * @param handler
+     *         the handler to call on each element of the type declaration
+     * @param <T>
+     *         the type of values that the given {@link GenericTypeHandler} produces
+     *
+     * @return the value produced by the given handler for the given type
+     */
     public static <T> T explore(@NotNull Type type, @NotNull GenericTypeHandler<T> handler) {
         return new GenericDeclarationExplorer<>(handler).explore(type);
     }
