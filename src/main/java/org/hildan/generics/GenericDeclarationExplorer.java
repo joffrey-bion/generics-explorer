@@ -22,10 +22,14 @@ public class GenericDeclarationExplorer<T> {
 
     private final GenericTypeHandler<T> handler;
 
+    private final ImplicitBoundsPolicy implicitBoundsPolicy;
+
     private final Set<TypeVariable> resolvedTypeVariables;
 
-    private GenericDeclarationExplorer(@NotNull GenericTypeHandler<T> handler) {
+    private GenericDeclarationExplorer(@NotNull GenericTypeHandler<T> handler,
+            ImplicitBoundsPolicy implicitBoundsPolicy) {
         this.handler = handler;
+        this.implicitBoundsPolicy = implicitBoundsPolicy;
         this.resolvedTypeVariables = new HashSet<>();
     }
 
@@ -42,7 +46,24 @@ public class GenericDeclarationExplorer<T> {
      * @return the value produced by the given handler for the given type
      */
     public static <T> T explore(@NotNull Type type, @NotNull GenericTypeHandler<T> handler) {
-        return new GenericDeclarationExplorer<>(handler).explore(type);
+        return explore(type, handler, ImplicitBoundsPolicy.IGNORE);
+    }
+
+    /**
+     * Recursively explores the given generic type using the given handler.
+     *
+     * @param type
+     *         the type to explore
+     * @param handler
+     *         the handler to call on each element of the type declaration
+     * @param <T>
+     *         the type of values that the given {@link GenericTypeHandler} produces
+     *
+     * @return the value produced by the given handler for the given type
+     */
+    public static <T> T explore(@NotNull Type type, @NotNull GenericTypeHandler<T> handler,
+            ImplicitBoundsPolicy implicitBoundsPolicy) {
+        return new GenericDeclarationExplorer<>(handler, implicitBoundsPolicy).explore(type);
     }
 
     private T explore(Type type) {
@@ -113,12 +134,18 @@ public class GenericDeclarationExplorer<T> {
         return handler.handleWildcardType(type, exploredUpperBounds, exploredLowerBounds);
     }
 
-    private static Type[] toSignificantBounds(Type[] bounds) {
-        // unbounded variables have one bound of type Object
-        if (bounds.length == 1 && bounds[0].equals(Object.class)) {
-            return new Type[0];
+    private Type[] toSignificantBounds(Type[] bounds) {
+        switch (implicitBoundsPolicy) {
+        case IGNORE:
+            // unbounded variables have one bound of type Object
+            if (bounds.length == 1 && bounds[0].equals(Object.class)) {
+                return new Type[0];
+            }
+            return bounds;
+        case PROCESS:
+        default:
+            return bounds;
         }
-        return bounds;
     }
 
     private List<T> exploreAll(Type[] types) {

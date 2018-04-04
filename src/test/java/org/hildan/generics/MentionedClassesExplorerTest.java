@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.google.gson.reflect.TypeToken;
 
+import static org.hildan.generics.ImplicitBoundsPolicy.PROCESS;
 import static org.junit.Assert.assertEquals;
 
 public class MentionedClassesExplorerTest {
@@ -112,9 +113,17 @@ public class MentionedClassesExplorerTest {
     }
 
     @Test
-    public void getClassesInDeclaration_listWildcard() {
+    public void getClassesInDeclaration_listWildcard_defaultPolicyIgnore() {
         Type listOfWildcard = new TypeToken<List<?>>() {}.getType();
         check(listOfWildcard, List.class);
+    }
+
+    @Test
+    public void getClassesInDeclaration_listWildcard_policyProcess() {
+        Type type = new TypeToken<List<?>>() {}.getType();
+        Set<Class<?>> actual = GenericDeclarationExplorer.explore(type, new MentionedClassesExplorer(), PROCESS);
+        Set<Class<?>> expected = new HashSet<>(Arrays.asList(List.class, Object.class));
+        assertEquals(expected, actual);
     }
 
     @Test

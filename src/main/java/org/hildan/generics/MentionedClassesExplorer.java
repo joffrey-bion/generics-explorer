@@ -15,6 +15,9 @@ import java.util.stream.Stream;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * An implementation of {@link GenericTypeHandler} that lists all classes appearing in a generic type declaration.
+ */
 public class MentionedClassesExplorer implements GenericTypeHandler<Set<Class<?>>> {
 
     /**

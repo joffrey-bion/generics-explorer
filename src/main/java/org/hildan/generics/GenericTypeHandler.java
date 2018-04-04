@@ -9,8 +9,12 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Handles
+ * Handles all kinds of parts of a generic type declaration to produce a value. The meaning of the resulting value is
+ * defined by the implementation of this interface. In fact, this interface is a way to provide user-specific
+ * domain-related code, while the {@link GenericDeclarationExplorer} encapsulates all the generic processing code.
+ *
  * @param <T>
+ *         the type of value produced when processing types
  */
 public interface GenericTypeHandler<T> {
 
