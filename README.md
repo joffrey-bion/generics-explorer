@@ -12,7 +12,7 @@ A way to recursively build something out of a generic type declaration.
 ### Gradle
 
 ```groovy
-compile 'org.hildan.generics:generics-explorer:1.0.0'
+compile 'org.hildan.generics:generics-explorer:1.1.0'
 ```
 
 ### Maven
@@ -21,7 +21,7 @@ compile 'org.hildan.generics:generics-explorer:1.0.0'
 <dependency>
    <groupId>org.hildan.generics</groupId>
    <artifactId>generics-explorer</artifactId>
-   <version>1.0.0</version>
+   <version>1.1.0</version>
 </dependency>
 ```
 
