@@ -137,17 +137,13 @@ public class GenericDeclarationExplorer<T> {
     }
 
     private Type[] toSignificantBounds(Type[] bounds) {
-        switch (implicitBoundsPolicy) {
-        case IGNORE:
+        if (implicitBoundsPolicy == ImplicitBoundsPolicy.IGNORE) {
             // unbounded variables have one bound of type Object
             if (bounds.length == 1 && bounds[0].equals(Object.class)) {
                 return new Type[0];
             }
-            return bounds;
-        case PROCESS:
-        default:
-            return bounds;
         }
+        return bounds;
     }
 
     private List<T> exploreAll(Type[] types) {
