@@ -33,6 +33,10 @@ dependencies {
     "checkstyleConfig"("org.hildan.checkstyle:checkstyle-config:2.2.0")
 }
 
+changelog {
+    futureVersionTag = project.version.toString()
+}
+
 checkstyle {
     maxWarnings = 0
     toolVersion = "8.8"

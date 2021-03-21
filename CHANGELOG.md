@@ -1,6 +1,7 @@
 # Change Log
 
-## Unreleased (2021-03-21)
+## [1.2.0](https://github.com/joffrey-bion/generics-explorer/tree/1.2.0) (2021-03-21)
+[View commits](https://github.com/joffrey-bion/generics-explorer/compare/1.1.0...1.2.0)
 
 **Closed issues:**
 
@@ -16,5 +17,5 @@
 - Add missing Javadoc [\#1](https://github.com/joffrey-bion/generics-explorer/issues/1)
 
 ## [1.0.0](https://github.com/joffrey-bion/generics-explorer/tree/1.0.0) (2018-03-12)
-[View commits](https://github.com/joffrey-bion/generics-explorer/compare/d31cbe59afe538a849ce8101ce57b0044321ef8a...1.0.0)
+[View commits](https://github.com/joffrey-bion/generics-explorer/compare/c3985f27d53314b4f91cee3af7f2286e358b968b...1.0.0)
 
