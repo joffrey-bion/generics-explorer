@@ -39,10 +39,6 @@ checkstyle {
     config = resources.text.fromArchiveEntry(configurations["checkstyleConfig"], "checkstyle.xml")
 }
 
-jacoco {
-    toolVersion = "0.8.1"
-}
-
 tasks.jacocoTestCoverageVerification {
     violationRules {
         rule {
